@@ -1,0 +1,23 @@
+{
+    "type": "group",
+    "fields": [
+        {
+            "type": "field",
+            "dataType": "text",
+            "fieldName": "First Name",
+            "accessorKey": "firstName"
+        },
+        {
+            "type": "field",
+            "dataType": "text",
+            "fieldName": "Last Name",
+            "accessorKey": "lastName"
+        },
+        {
+            "type": "field",
+            "dataType": "number",
+            "fieldName": "Mobile Number",
+            "accessorKey": "mobNo"
+        }
+    ]
+}
