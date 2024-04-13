@@ -1,6 +1,12 @@
-import { FieldType } from "./field";
+import { z } from "zod";
+import { FieldTypeDef } from "./field";
 
-export type GroupField = {
+type GroupFieldType = {
 	type: "group";
-	fields: (FieldType | GroupField)[];
+	fields: (z.infer<typeof FieldTypeDef> | GroupFieldType)[];
 };
+
+export const GroupTypeDef: z.ZodType<GroupFieldType> = z.object({
+	type: z.literal("group"),
+	fields: z.array(z.union([FieldTypeDef, z.lazy(() => GroupTypeDef)])),
+});

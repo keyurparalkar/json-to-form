@@ -1,13 +1,8 @@
-export type FieldType = {
-	type: "field";
-	dataType: FIELD_DATA_TYPE;
-	fieldName: string;
-	accessorKey: string;
-	constraints?: Partial<Record<string, unknown>>;
-};
+import { z } from "zod";
 
-export enum FIELD_DATA_TYPE {
-	TEXT = "text",
-	NUMBER = "number",
-	EMAIL = "email",
-}
+export const FieldTypeDef = z.object({
+	type: z.literal("field"),
+	dataType: z.enum(["text", "number", "email"]),
+	fieldName: z.string(),
+	accessorKey: z.string(),
+});
