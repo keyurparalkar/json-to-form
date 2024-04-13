@@ -1,9 +1,8 @@
 import { useForm } from "react-hook-form";
 import InputField from "./components/fields/InputField";
-import personalInfoSchema from "./schemas/personal_info.json";
+import personalInfoSchema from "./schemas/forms/personal_info.json";
 
 function App() {
-	console.log({ personalInfoSchema });
 	const schema = personalInfoSchema;
 	const { register, handleSubmit } = useForm();
 

@@ -18,6 +18,12 @@
             "dataType": "number",
             "fieldName": "Mobile Number",
             "accessorKey": "mobNo"
+        },
+        {
+            "type": "field",
+            "dataType": "email",
+            "fieldName": "Email Address",
+            "accessorKey": "email"
         }
     ]
 }

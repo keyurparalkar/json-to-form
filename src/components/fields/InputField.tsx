@@ -1,7 +1,6 @@
 import { UseFormRegister } from "react-hook-form";
 import { Input, InputProps } from "../ui/input";
 import { Label } from "../ui/label";
-import { FieldType } from "@/interfaces/field";
 
 interface InputFieldProps extends InputProps {
 	labelText: string;
