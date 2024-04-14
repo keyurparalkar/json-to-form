@@ -5,9 +5,6 @@ import { SchemaDef } from "./interfaces/schema";
 
 const schema = SchemaDef.parse(personalInfoSchema);
 
-// type FormValues<T extends typeof schema> = {
-// 	[P in keyof T]: T[P];
-// };
 const FormValues = schema.fields.reduce((acc, currValue) => {
 	if (currValue.type === "field") {
 		acc[currValue.accessorKey] = "";
@@ -18,7 +15,6 @@ const FormValues = schema.fields.reduce((acc, currValue) => {
 type TFormValues = typeof FormValues;
 
 function App() {
-	console.log({ schema });
 	const { register, handleSubmit } = useForm<TFormValues>();
 
 	const onSubmit = (data: TFormValues) => {
