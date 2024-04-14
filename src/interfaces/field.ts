@@ -36,3 +36,5 @@ export const FieldTypeDef = z.object({
 		})
 		.optional(),
 });
+
+export type TField = z.infer<typeof FieldTypeDef>;

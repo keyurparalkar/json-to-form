@@ -23,7 +23,13 @@
             "type": "field",
             "dataType": "email",
             "fieldName": "Email Address",
-            "accessorKey": "email"
+            "accessorKey": "email",
+            "validation": {
+                "required": {
+                    "value": true,
+                    "message": "Email Address is required"
+                }
+            }
         }
     ]
 }

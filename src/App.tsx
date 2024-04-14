@@ -15,7 +15,11 @@ const FormValues = schema.fields.reduce((acc, currValue) => {
 type TFormValues = typeof FormValues;
 
 function App() {
-	const { register, handleSubmit } = useForm<TFormValues>();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<TFormValues>();
 
 	const onSubmit = (data: TFormValues) => {
 		console.log("form Data = ", data);
@@ -36,7 +40,9 @@ function App() {
 									register={register}
 									labelText={field.fieldName}
 									htmlFor={field.accessorKey}
-									type={field.type}
+									type={field.dataType}
+									validation={field.validation}
+									error={errors[field.accessorKey]}
 								/>
 							)
 					)}
