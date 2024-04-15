@@ -1,4 +1,8 @@
+import { useCallback, useState } from "react";
 import { useForm } from "react-hook-form";
+import CodeMirror from "@uiw/react-codemirror";
+import { json } from "@codemirror/lang-json";
+
 import personalInfoSchema from "./schemas/forms/personal_info.json";
 import { SchemaDef } from "./interfaces/schema";
 import SchemaRenderer from "./components/ui/SchemaRenderer";
@@ -15,6 +19,12 @@ const FormValues = schema.fields.reduce((acc, currValue) => {
 export type TFormValues = typeof FormValues;
 
 function App() {
+	const [value, setValue] = useState(`${JSON.stringify(schema, null, 2)}`);
+	const onChange = useCallback((val, viewUpdate) => {
+		console.log("val:", val);
+		setValue(val);
+	}, []);
+
 	const {
 		register,
 		handleSubmit,
@@ -26,15 +36,29 @@ function App() {
 	};
 
 	return (
-		<div className="grid grid-rows-[50px_1fr_50px] m-5 gap-2">
+		<div className="grid grid-rows-[70px_1fr_40px] m-5 gap-2">
 			<h1 className="text-4xl font-bold">JSON to Form</h1>
 
 			<div id="container" className="grid grid-cols-2 gap-x-2">
-				<div id="editor"></div>
-				<form onSubmit={handleSubmit(onSubmit)}>
-					<SchemaRenderer schema={schema} errors={errors} register={register} />
-					<input type="submit" />
-				</form>
+				<div id="editor">
+					<CodeMirror
+						className="border border-slate-300"
+						value={value}
+						height="500px"
+						extensions={[json()]}
+						onChange={onChange}
+					/>
+				</div>
+				<div id="form-container" className="border border-slate-300">
+					<form className="my-5 mx-10" onSubmit={handleSubmit(onSubmit)}>
+						<SchemaRenderer
+							schema={schema}
+							errors={errors}
+							register={register}
+						/>
+						<input type="submit" />
+					</form>
+				</div>
 			</div>
 
 			<div id="status-bar" className="bg-gray-400"></div>
