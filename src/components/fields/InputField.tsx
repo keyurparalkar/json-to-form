@@ -17,7 +17,7 @@ const InputField = (props: InputFieldProps) => {
 	console.log({ htmlFor, validation });
 	return (
 		<>
-			<div className="flex flex-col space-y-2">
+			<div className="flex flex-col space-y-2 my-2">
 				<Label htmlFor={htmlFor}>{labelText}</Label>
 				<Input
 					id="htmlFor"

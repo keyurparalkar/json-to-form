@@ -19,10 +19,10 @@ const FormValues = schema.fields.reduce((acc, currValue) => {
 export type TFormValues = typeof FormValues;
 
 function App() {
-	const [value, setValue] = useState(`${JSON.stringify(schema, null, 2)}`);
-	const onChange = useCallback((val, viewUpdate) => {
-		console.log("val:", val);
-		setValue(val);
+	const [value, setValue] = useState(schema);
+	const onChange = useCallback((val) => {
+		const tempSchema = SchemaDef.parse(JSON.parse(val));
+		setValue(tempSchema);
 	}, []);
 
 	const {
@@ -43,7 +43,7 @@ function App() {
 				<div id="editor">
 					<CodeMirror
 						className="border border-slate-300"
-						value={value}
+						value={`${JSON.stringify(value, null, 2)}`}
 						height="500px"
 						extensions={[json()]}
 						onChange={onChange}
@@ -52,7 +52,7 @@ function App() {
 				<div id="form-container" className="border border-slate-300">
 					<form className="my-5 mx-10" onSubmit={handleSubmit(onSubmit)}>
 						<SchemaRenderer
-							schema={schema}
+							schema={value}
 							errors={errors}
 							register={register}
 						/>
