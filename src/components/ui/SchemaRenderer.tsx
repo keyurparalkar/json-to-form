@@ -12,7 +12,7 @@ type SchemaRendererProps = {
 const SchemaRenderer = (props: SchemaRendererProps) => {
 	const { schema, errors, register } = props;
 
-	return schema.fields.map((field) => {
+	return schema.fields.map((field, index) => {
 		if (field.type === "field") {
 			return (
 				<InputField
@@ -28,7 +28,12 @@ const SchemaRenderer = (props: SchemaRendererProps) => {
 		}
 
 		return (
-			<SchemaRenderer schema={field} errors={errors} register={register} />
+			<SchemaRenderer
+				key={`key-${field.type}-${index}`}
+				schema={field}
+				errors={errors}
+				register={register}
+			/>
 		);
 	});
 };
