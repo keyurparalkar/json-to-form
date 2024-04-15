@@ -30,6 +30,29 @@
                     "message": "Email Address is required"
                 }
             }
+        },
+        {
+            "type": "group",
+            "fields": [
+                {
+                    "type": "field",
+                    "dataType": "text",
+                    "fieldName": "UAN",
+                    "accessorKey": "uan"
+                },
+                {
+                    "type": "field",
+                    "dataType": "text",
+                    "fieldName": "PAN",
+                    "accessorKey": "pan"
+                },
+                {
+                    "type": "field",
+                    "dataType": "number",
+                    "fieldName": "Aadhar card number",
+                    "accessorKey": "aadharCardNum"
+                }
+            ]
         }
     ]
 }

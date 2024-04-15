@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
-import InputField from "./components/fields/InputField";
 import personalInfoSchema from "./schemas/forms/personal_info.json";
 import { SchemaDef } from "./interfaces/schema";
+import SchemaRenderer from "./components/ui/SchemaRenderer";
 
 const schema = SchemaDef.parse(personalInfoSchema);
 
@@ -12,7 +12,7 @@ const FormValues = schema.fields.reduce((acc, currValue) => {
 	return acc;
 }, {} as Record<string, string>);
 
-type TFormValues = typeof FormValues;
+export type TFormValues = typeof FormValues;
 
 function App() {
 	const {
@@ -30,22 +30,7 @@ function App() {
 			<h1 className="text-4xl font-bold tracking-tight mb-5">JSON to Form</h1>
 
 			<form onSubmit={handleSubmit(onSubmit)}>
-				{/* TODO(Keyur): Make the below logic recursive*/}
-				{schema &&
-					schema.fields.map(
-						(field) =>
-							field.type === "field" && (
-								<InputField
-									key={`key-${field.accessorKey}`}
-									register={register}
-									labelText={field.fieldName}
-									htmlFor={field.accessorKey}
-									type={field.dataType}
-									validation={field.validation}
-									error={errors[field.accessorKey]}
-								/>
-							)
-					)}
+				<SchemaRenderer schema={schema} errors={errors} register={register} />
 				<input type="submit" />
 			</form>
 		</div>

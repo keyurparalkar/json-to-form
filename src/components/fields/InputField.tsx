@@ -2,11 +2,12 @@ import { FieldError, UseFormRegister } from "react-hook-form";
 import { Input, InputProps } from "../ui/input";
 import { Label } from "../ui/label";
 import { TField } from "@/interfaces/field";
+import { TFormValues } from "@/App";
 
 interface InputFieldProps extends InputProps {
 	labelText: string;
 	htmlFor: string;
-	register: UseFormRegister<any>;
+	register: UseFormRegister<TFormValues>;
 	validation?: TField["validation"];
 	error?: FieldError;
 }
