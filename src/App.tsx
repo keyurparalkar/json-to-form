@@ -26,13 +26,18 @@ function App() {
 	};
 
 	return (
-		<div className="container mx-auto flex flex-col items-center">
-			<h1 className="text-4xl font-bold tracking-tight mb-5">JSON to Form</h1>
+		<div className="grid grid-rows-[50px_1fr_50px] m-5 gap-2">
+			<h1 className="text-4xl font-bold">JSON to Form</h1>
 
-			<form onSubmit={handleSubmit(onSubmit)}>
-				<SchemaRenderer schema={schema} errors={errors} register={register} />
-				<input type="submit" />
-			</form>
+			<div id="container" className="grid grid-cols-2 gap-x-2">
+				<div id="editor"></div>
+				<form onSubmit={handleSubmit(onSubmit)}>
+					<SchemaRenderer schema={schema} errors={errors} register={register} />
+					<input type="submit" />
+				</form>
+			</div>
+
+			<div id="status-bar" className="bg-gray-400"></div>
 		</div>
 	);
 }
