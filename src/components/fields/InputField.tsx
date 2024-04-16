@@ -28,7 +28,7 @@ const InputField = (props: InputFieldProps) => {
 					{...register(htmlFor, { ...validation })}
 				/>
 				{error && (
-					<span className="text-xs text-red-600 font-semibold">
+					<span className="text-xs text-red-600 font-light">
 						{error.message}
 					</span>
 				)}
