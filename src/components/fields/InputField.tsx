@@ -17,7 +17,9 @@ const InputField = (props: InputFieldProps) => {
 	return (
 		<>
 			<div className="flex flex-col space-y-2 my-2">
-				<Label htmlFor={htmlFor}>{labelText}</Label>
+				<Label className={`${error ? "text-red-600" : ""}`} htmlFor={htmlFor}>
+					{labelText}
+				</Label>
 				<Input
 					id="htmlFor"
 					{...rest}
@@ -25,7 +27,11 @@ const InputField = (props: InputFieldProps) => {
 					// @ts-ignore
 					{...register(htmlFor, { ...validation })}
 				/>
-				{error && <span>{error.message}</span>}
+				{error && (
+					<span className="text-xs text-red-600 font-semibold">
+						{error.message}
+					</span>
+				)}
 			</div>
 		</>
 	);

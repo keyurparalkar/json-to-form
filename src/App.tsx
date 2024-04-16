@@ -55,9 +55,7 @@ function App() {
 		handleSubmit,
 		reset,
 		formState: { errors },
-	} = useForm<TFormValues>({
-		shouldUseNativeValidation: true,
-	});
+	} = useForm<TFormValues>();
 
 	const onSubmit = (data: TFormValues) => {
 		console.log("form Data = ", data);
