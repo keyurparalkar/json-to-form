@@ -14,7 +14,6 @@ interface InputFieldProps extends InputProps {
 
 const InputField = (props: InputFieldProps) => {
 	const { htmlFor, register, labelText, validation, error, ...rest } = props;
-	console.log({ htmlFor, validation });
 	return (
 		<>
 			<div className="flex flex-col space-y-2 my-2">

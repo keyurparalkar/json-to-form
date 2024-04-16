@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import CodeMirror from "@uiw/react-codemirror";
 import { json } from "@codemirror/lang-json";
@@ -6,6 +6,7 @@ import { json } from "@codemirror/lang-json";
 import personalInfoSchema from "./schemas/forms/personal_info.json";
 import { SchemaDef } from "./interfaces/schema";
 import SchemaRenderer from "./components/ui/SchemaRenderer";
+import { ZodError } from "zod";
 
 const schema = SchemaDef.parse(personalInfoSchema);
 
@@ -20,10 +21,26 @@ export type TFormValues = typeof FormValues;
 
 function App() {
 	const [value, setValue] = useState(schema);
-	const onChange = useCallback((val) => {
-		const tempSchema = SchemaDef.parse(JSON.parse(val));
-		setValue(tempSchema);
+	const [editorError, setEditorError] = useState<ZodError>();
+
+	const onChange = useCallback((val: string) => {
+		try {
+			const tempSchema = SchemaDef.parse(JSON.parse(val));
+			setValue(tempSchema);
+			setEditorError(undefined);
+		} catch (error) {
+			setEditorError(error as ZodError);
+		}
 	}, []);
+
+	const errorMessage = useMemo(() => {
+		if (editorError && editorError.issues[0]) {
+			const firstIssue = editorError.issues[0];
+			return firstIssue.code === "invalid_union"
+				? firstIssue.unionErrors[0]
+				: "";
+		}
+	}, [editorError]);
 
 	const {
 		register,
@@ -61,7 +78,9 @@ function App() {
 				</div>
 			</div>
 
-			<div id="status-bar" className="bg-gray-400"></div>
+			<div id="error-status-bar" className="bg-gray-400">
+				{errorMessage && JSON.stringify(errorMessage.issues[0])}
+			</div>
 		</div>
 	);
 }
