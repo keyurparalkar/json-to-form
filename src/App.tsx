@@ -45,11 +45,13 @@ function App() {
 	const {
 		register,
 		handleSubmit,
+		reset,
 		formState: { errors },
 	} = useForm<TFormValues>();
 
 	const onSubmit = (data: TFormValues) => {
 		console.log("form Data = ", data);
+		reset();
 	};
 
 	return (
