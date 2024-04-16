@@ -8,6 +8,7 @@ import personalInfoSchema from "./schemas/forms/personal_info.json";
 import { SchemaDef } from "./interfaces/schema";
 import SchemaRenderer from "./components/ui/SchemaRenderer";
 import { getFormValuesFromSchema, symmetricDiff } from "./utils";
+import { Button } from "./components/ui/button";
 
 const schema = SchemaDef.parse(personalInfoSchema);
 
@@ -94,13 +95,18 @@ function App() {
 					/>
 				</div>
 				<div id="form-container" className="border border-slate-300">
-					<form className="my-8 mx-32" onSubmit={handleSubmit(onSubmit)}>
-						<SchemaRenderer
-							schema={value}
-							errors={errors}
-							register={register}
-						/>
-						<input type="submit" />
+					<form className="my-8 mx-[52px]" onSubmit={handleSubmit(onSubmit)}>
+						<div
+							id="form-fields--fixed--container"
+							className="h-[400px] overflow-y-scroll p-[10px]"
+						>
+							<SchemaRenderer
+								schema={value}
+								errors={errors}
+								register={register}
+							/>
+						</div>
+						<Button type="submit">Submit</Button>
 					</form>
 				</div>
 			</div>
