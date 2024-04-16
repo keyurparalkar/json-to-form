@@ -111,9 +111,9 @@ function App() {
 				</div>
 			</div>
 
-			<div id="error-status-bar" className="bg-gray-400">
+			<code id="error-status-bar" className="bg-red-100 text-red-600 text-sm">
 				{JSON.stringify(errorMessage)}
-			</div>
+			</code>
 		</div>
 	);
 }
