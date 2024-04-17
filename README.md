@@ -6,7 +6,7 @@ Here the JSON schema acts a depenedency to the `SchemaRenderer` component. This 
 
 ### Inspiration
 
-I got inspired to make this project when I was debugging a friends react based form. It had a lot of explicit conditional cases based on the specific input field which made that form more prudent to new changes.
+I got inspired to make this project when I was debugging a friends react based form. It had a lot of explicit conditional cases based on the specific input field which made that form more resistant to new changes.
 
 I found JSON schema driven form based soltions, which I found to be extensible and easily configurable and testable.
 
@@ -82,11 +82,17 @@ With the help of the DI pattern we are able to easily configure forms. Making ch
 
 Here is a simple example of adding and removing fields
 
-// video
+
+https://github.com/keyurparalkar/json-to-form/assets/14138515/b68e6a97-937b-42e6-9119-d91a21d4765a
+
 
 You can also add validation to the form from the JSON schema itself:
 
-// video that includes validation
+
+
+https://github.com/keyurparalkar/json-to-form/assets/14138515/ab90fedd-02a8-4907-85d1-777be48de710
+
+
 
 You can read more about dependency injection pattern in react [here](https://blog.logrocket.com/dependency-injection-react/).
 
