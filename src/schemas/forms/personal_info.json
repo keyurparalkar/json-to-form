@@ -1,5 +1,6 @@
 {
     "type": "group",
+    "orientation": "horizontal",
     "fields": [
         {
             "type": "field",
@@ -33,6 +34,7 @@
         },
         {
             "type": "group",
+            "orientation": "vertical",
             "fields": [
                 {
                     "type": "field",
