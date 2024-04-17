@@ -105,8 +105,8 @@ function App() {
 								errors={errors}
 								register={register}
 							/>
+							<Button type="submit">Submit</Button>
 						</div>
-						<Button type="submit">Submit</Button>
 					</form>
 				</div>
 			</div>
