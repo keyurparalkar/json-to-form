@@ -4,6 +4,10 @@ This project focuses on demonstrating the Dependency Injection(DI) pattern by tr
 
 Here the JSON schema acts a depenedency to the `SchemaRenderer` component. This component requires JSON schema so that it can map over to this object and rendered the required input fields for the form.
 
+This project was also demonstrated at the JSlovers meet-up. You can find the details about the talk below:
+- Slides - [Building forms with Dependency Injection pattern in React.pdf](https://github.com/keyurparalkar/json-to-form/files/15064877/Building.forms.with.Dependency.Injection.pattern.in.React.pdf)
+- [Talk](https://www.meetup.com/jslovers-pune/events/299433526/)
+
 ### Inspiration
 
 I got inspired to make this project when I was debugging a friends react based form. It had a lot of explicit conditional cases based on the specific input field which made that form more resistant to new changes.
